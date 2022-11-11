@@ -1,5 +1,9 @@
 import { useState } from 'react';
 
+import Search from './components/Search';
+import AddContact from './components/AddContact';
+import ContactList from './components/ContactList';
+
 const Phonebook = () => {
   const [contacts, setContacts] = useState([
     { name: 'Arto Hellas', number: '040-123456', id: 1 },
@@ -30,6 +34,7 @@ const Phonebook = () => {
       number: newNumber,
       id: contacts.length + 1
     };
+
     setContacts(contacts.concat(newContact));
     setNewName('');
   }
@@ -49,30 +54,17 @@ const Phonebook = () => {
   return (
     <div>
       <h2>Phonebook</h2>
-      <form>
-        Search: <input onChange={handleSearch} />
-      </form>
-      <form onSubmit={addContact}>
-        <div>
-          Name: <input
-            value={newName}
-            onChange={handleNewNameChange}
-          />
-        </div>
-        <div>
-          Phone Number: <input
-            value={newNumber}
-            onChange={handleNewNumberChange}
-          />
-        </div>
-        <div>
-          <button type="submit">Add Contact</button>
-        </div>
-      </form>
+      <Search handleSearch={handleSearch} />
+      <AddContact
+        addContact={addContact}
+        newName={newName}
+        handleNewNameChange={handleNewNameChange}
+        newNumber={newNumber}
+        handleNewNumberChange={handleNewNumberChange}
+      />
+
       <h2>Numbers</h2>
-      {displayedContacts.map(contact => {
-        return (<p key={contact.id}>{contact.name} {contact.number}</p>);
-      })}
+      <ContactList displayedContacts={displayedContacts} />
     </div>
   );
 };
