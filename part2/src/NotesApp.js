@@ -14,11 +14,11 @@ const App = (props) => {
       date: new Date().toISOString(),
       important: Math.random() < 0.5,
       id: notes.length + 1,
-    }
+    };
 
     setNotes(notes.concat(noteObject));
     setNewNote('');
-  }
+  };
 
   const handleNewNoteChange = (event) => setNewNote(event.target.value);
 
@@ -42,6 +42,6 @@ const App = (props) => {
       </form>
     </div>
   )
-}
+};
 
-export default App
+export default App;
