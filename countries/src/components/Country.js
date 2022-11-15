@@ -20,7 +20,7 @@ const Country = (props) => {
       });
   };
 
-  useEffect(hook);
+  useEffect(hook, [api_key, lat, lon]);
 
   const generateLanguageList = () => {
     let langKeys = Object.keys(country.languages);
