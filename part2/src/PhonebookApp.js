@@ -1,43 +1,56 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import Search from './components/Search';
 import AddContact from './components/AddContact';
 import ContactList from './components/ContactList';
+import contactService from './services/contacts';
 
-const Phonebook = () => {
-  const [contacts, setContacts] = useState([
-    { name: 'Arto Hellas', number: '040-123456', id: 1 },
-    { name: 'Ada Lovelace', number: '39-44-5323523', id: 2 },
-    { name: 'Dan Abramov', number: '12-43-234345', id: 3 },
-    { name: 'Mary Poppendieck', number: '39-23-6423122', id: 4 }
-  ]);
+const PhonebookApp = () => {
+  const [contacts, setContacts] = useState([]);
   const [newName, setNewName] = useState('');
   const [newNumber, setNewNumber] = useState('');
   const [searchValue, setSearchValue] = useState('');
 
+  useEffect(() => {
+    contactService
+      .getAll()
+      .then((allContacts) => setContacts(allContacts));
+  }, []);
+
   const addContact = (event) => {
     event.preventDefault();
-    let existingNames = contacts.map(contact => contact.name.toLowerCase());
-    let existingNumbers = contacts.map(contact => contact.number);
-    if (existingNames.includes(newName.toLowerCase())) {
-      alert(`${newName} has already been added to contacts.`);
+    let match = contacts.filter(contact => contact.name === newName).pop();
+
+    if (match) {
+      if (window.confirm(`${newName} has already been added to contacts.
+      Would you like to updatethe phone number?`)) {
+        const updatedContact = {...match, number: newNumber};
+        contactService
+          .update(match.id, updatedContact)
+          .then(response => {
+            setContacts(contacts.map(contact => {
+              return contact.id === match.id ? response : contact;
+            }));
+            setNewName('');
+            setNewNumber('');
+          })
+      }
       return;
+    } else {
+      const newContact = {
+        name: newName,
+        number: newNumber
+      };
+
+      contactService
+        .create(newContact)
+        .then(returnedContact => {
+          setContacts(contacts.concat(returnedContact));
+          setNewName('');
+          setNewNumber('');
+        });
     }
-
-    if ( existingNumbers.includes(newNumber)) {
-      alert(`${newNumber} has already been added to contacts`);
-      return;
-    }
-
-    const newContact = {
-      name: newName,
-      number: newNumber,
-      id: contacts.length + 1
-    };
-
-    setContacts(contacts.concat(newContact));
-    setNewName('');
-  }
+  };
 
   const handleNewNameChange = (event) => setNewName(event.target.value);
   const handleNewNumberChange = (event) => setNewNumber(event.target.value);
@@ -50,6 +63,28 @@ const Phonebook = () => {
     .filter((contact) => {
       return contact.name.toLowerCase().startsWith(searchValue);
   });
+
+  const handleClick = (event) => {
+    event.preventDefault();
+    const id = event.target.value;
+    const contactName = contacts
+      .filter(contact => String(contact.id) === id)
+      .pop().name;
+
+    if (window.confirm(`Delete ${contactName}?`)) {
+      contactService
+        .deleteContact(id)
+        .then(deletedContact => {
+          console.log(deletedContact);
+          alert(`${contactName} was removed from contact list.`)
+          setContacts(contacts.filter(contact => {
+            return String(contact.id) !== id;
+          }));
+        })
+        .catch(deletedContact => alert(`${contactName} has already been
+          removed from contact list.`));
+    }
+  };
 
   return (
     <div>
@@ -64,9 +99,12 @@ const Phonebook = () => {
       />
 
       <h2>Numbers</h2>
-      <ContactList displayedContacts={displayedContacts} />
+      <ContactList
+        displayedContacts={displayedContacts}
+        handleClick={handleClick}
+      />
     </div>
   );
 };
 
-export default Phonebook;
+export default PhonebookApp;
