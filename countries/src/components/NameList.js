@@ -1,9 +1,17 @@
+import Button from './Button';
 
-const NameList = ({ countries }) => {
+const NameList = (props) => {
   return (
     <ul>
-      {countries.map((country) => {
-        return <li key={country.name.official}>{country.name.common}</li>
+      {props.countries.map((country) => {
+        return <li key={country.name.official}>
+          {country.name.common}
+          <Button
+            name={country.name.common}
+            handleButtonClick={props.handleButtonClick}
+            text="Show"
+          />
+        </li>
       })}
   </ul>
   );

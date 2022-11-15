@@ -9,16 +9,16 @@ const App = () => {
   const [searchValue, setSearchValue] = useState('');
 
   const hook = () => {
-    console.log('effect');
     axios
       .get('https://restcountries.com/v3.1/all')
       .then(response => {
-        console.log('fulfiled');
         setCountries(response.data);
       });
   };
 
   const handleSearch = event => setSearchValue(event.target.value);
+
+  const handleButtonClick = event => setSearchValue(event.target.name);
 
   const matchingCountries = searchValue === '' ? [] : countries
     .filter((country) => {
@@ -30,7 +30,10 @@ const App = () => {
   return (
     <React.Fragment>
       <Search handleSearch={handleSearch} />
-      <CountryList countries={matchingCountries} />
+      <CountryList
+        countries={matchingCountries}
+        handleButtonClick={handleButtonClick}
+      />
     </React.Fragment>
   );
 }

@@ -1,7 +1,7 @@
 import Country from './components/Country';
 import NameList from './components/NameList';
 
-const CountryList = ({ countries }) => {
+const CountryList = ({ countries, handleButtonClick }) => {
   if (countries.length > 10) {
     return (<p>Too many matches. Specify another filter.</p>);
   } else if (countries.length === 1) {
@@ -9,7 +9,10 @@ const CountryList = ({ countries }) => {
   } else if (countries.length === 0) {
     return <p>Sorry, there are no matches.</p>
   } else {
-    return <NameList countries={countries} />
+    return <NameList
+      countries={countries}
+      handleButtonClick={handleButtonClick}
+    />
   }
 }
 
