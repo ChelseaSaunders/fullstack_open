@@ -1,7 +1,24 @@
 const express = require('express');
 const app = express();
+const morgan = require('morgan');
 
 app.use(express.json());
+app.use(morgan('tiny'));
+
+morgan.token('postLogger', (request) => {
+  if (request.method === 'post') {
+    return JSON.stringify({
+      name: request.body.name,
+      phone: request.body.phone
+    });
+  }
+});
+
+app.use(morgan('postLogger'));
+
+const unknownEndpoint = (request, response) => {
+  response.status(404).send({ error: 'unknown endpoint' });
+};
 
 let persons = [
   {
@@ -42,7 +59,7 @@ app.get('/api/persons/:id', (request, response) => {
   if (person) {
     response.json(person);
   } else {
-    response.status(404).end();
+    app.use(unknownEndpoint);
   }
 });
 
@@ -50,7 +67,7 @@ app.delete('/api/persons/:id', (request, response) => {
   const id = Number(request.params.id);
   persons = persons.filter(person => person.id !== id);
 
-  response.status(204).end();
+  app.use(unknownEndpoint);
 });
 
 const postError = (body) => {
@@ -74,7 +91,7 @@ app.post('/api/persons', (request, response) => {
 
   if (postError(body)) {
     console.log(postError(body));
-    response.status(204).end();
+    app.use(unknownEndpoint);
   } else {
     persons = persons.concat(person);
     response.json(person);
