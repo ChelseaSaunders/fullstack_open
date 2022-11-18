@@ -100,7 +100,7 @@ app.post('/api/persons', (request, response) => {
   }
 });
 
-const PORT = 3001;
+const PORT = 8080;
 app.listen(PORT, () => {
   console.log(`port: ${PORT}`);
 });
