@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import Search from './components/Search';
-import CountryList from './CountryList';
+import CountryList from '.components/CountryList';
 
 const App = () => {
   const [countries, setCountries] = useState([]);
@@ -27,6 +27,7 @@ const App = () => {
     });
 
   useEffect(hook, []);
+
   return (
     <React.Fragment>
       <Search handleSearch={handleSearch} />
