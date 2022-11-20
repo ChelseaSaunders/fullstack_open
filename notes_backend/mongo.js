@@ -10,8 +10,15 @@ const password = process.argv[2];
 const url = `mongodb+srv://chels1440:${password}@cluster0.eihyvn3.mongodb.net/noteApp?retryWrites=true&w=majority`;
 
 const noteSchema = new mongoose.Schema({
-  content: String,
-  date: Date,
+  content: {
+    type: String,
+    minLength: 5,
+    required: true,
+  },
+  date: {
+    type: Date,
+    required: true,
+  },
   important: Boolean,
 });
 
@@ -22,12 +29,6 @@ mongoose
   .then((result) => {
     console.log('connected');
 
-    // const note = new Note({
-    //   content: 'HTML is Easy',
-    //   date: new Date(),
-    //   important: true,
-    // });
-
     Note
       .find({})
       .then(result => {
@@ -36,11 +37,5 @@ mongoose
         });
         mongoose.connection.close();
       });
-    // mongoose.connection.close();
-    // return note.save()
   })
-  // .then(() => {
-  //   console.log('note saved!')
-  //   return mongoose.connection.close()
-  // })
   .catch((err) => console.log(`LOGGING ERROR: ${err}`));
