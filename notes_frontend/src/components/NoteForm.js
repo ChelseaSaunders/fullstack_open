@@ -3,7 +3,9 @@ import { useState } from 'react'
 const NoteForm = ({ createNote }) => {
   const [newNote, setNewNote] = useState('')
 
-  const handleChange = event => setNewNote(event.target.value)
+  const handleChange = (event) => {
+    setNewNote(event.target.value)
+  }
 
   const addNote = (event) => {
     event.preventDefault()
