@@ -8,10 +8,10 @@ const noteSchema = new mongoose.Schema({
   },
   date: Date,
   important: Boolean,
-  user: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User'
-  }
+  // user: {
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   ref: 'User'
+  // }
 })
 
 noteSchema.set('toJSON', {
@@ -22,4 +22,4 @@ noteSchema.set('toJSON', {
   }
 })
 
-module.exports = mongoose.model('Note', noteSchema);
+module.exports = mongoose.model('Note', noteSchema)
