@@ -1,0 +1,215 @@
+[33mcommit 5ddf825ba9cf381d75e0aca901c0c6e73459dd7d[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: Chelsea Saunders <c_chilcoat@msn.com>
+Date:   Tue Nov 22 08:55:37 2022 -0800
+
+    want to be sure everything is up to date
+
+[33mcommit b3dabf548ab50525e5b0636df17b5d565a195570[m
+Author: Chelsea Saunders <c_chilcoat@msn.com>
+Date:   Tue Nov 22 07:16:55 2022 -0800
+
+    password token working
+
+[33mcommit ffaec6f4e9f287596247a51e89168317abf3ef15[m
+Author: Chelsea Saunders <c_chilcoat@msn.com>
+Date:   Tue Nov 22 07:05:58 2022 -0800
+
+    finished with lesson 4
+
+[33mcommit df162ac8a7552f8c4a56532f3370a01d5a038b08[m
+Author: Chelsea Saunders <c_chilcoat@msn.com>
+Date:   Tue Nov 22 03:54:01 2022 -0800
+
+    added users
+
+[33mcommit f938a1a59ce8050e1c0d03df7c72d192f2812291[m
+Author: Chelsea Saunders <c_chilcoat@msn.com>
+Date:   Tue Nov 22 02:51:05 2022 -0800
+
+    finished 4b
+
+[33mcommit c3dfe2519871449d37aa09bacd9836a6c33dd589[m
+Author: Chelsea Saunders <c_chilcoat@msn.com>
+Date:   Tue Nov 22 00:11:19 2022 -0800
+
+    finished refactoring async, rmoving try catch is next
+
+[33mcommit 8c30ac1b43918e01a9b6e88ababad90e351c9252[m
+Author: Chelsea Saunders <c_chilcoat@msn.com>
+Date:   Mon Nov 21 23:23:40 2022 -0800
+
+    worked through supertest lesson
+
+[33mcommit 5cbb9eb58551d92007da747be554320a6d9b917b[m
+Author: Chelsea Saunders <c_chilcoat@msn.com>
+Date:   Sun Nov 20 10:44:00 2022 -0800
+
+    exercise 4.1-4.2 done and working
+
+[33mcommit 840510c2789057af1f9728c5f148b2abd05b2781[m
+Author: Chelsea Saunders <c_chilcoat@msn.com>
+Date:   Sun Nov 20 08:06:48 2022 -0800
+
+    updated file structure per lesson 4a
+
+[33mcommit 5447cb417ec1eb4e868803c3aba00f4996d2daa0[m
+Author: Chelsea Saunders <c_chilcoat@msn.com>
+Date:   Sun Nov 20 07:30:28 2022 -0800
+
+    keep forgetting to delete hard coded dummy notes; just did
+
+[33mcommit 90bbb0080b048ee0777e0a968fea8ec3d8891f7f[m
+Author: Chelsea Saunders <c_chilcoat@msn.com>
+Date:   Sun Nov 20 07:24:37 2022 -0800
+
+    part 3d done and working
+
+[33mcommit d64d3040804fb80f37138211a23ac01d7b4d9a44[m
+Author: Chelsea Saunders <c_chilcoat@msn.com>
+Date:   Sat Nov 19 17:37:56 2022 -0800
+
+    finished lesson 3d, weird bug in notes with toggling important, can debug if have time, but backend + database is workng
+
+[33mcommit 043606a468e45e3a27ada6bbdbf6e9c96249d3fa[m
+Author: Chelsea Saunders <c_chilcoat@msn.com>
+Date:   Sat Nov 19 16:31:02 2022 -0800
+
+    working through db stuff,just started using database in route hanlers section; fly deploy from before worked
+
+[33mcommit 5f4f7df030107e0ce0b824e1ca1510afaaa2433c[m
+Author: Chelsea Saunders <c_chilcoat@msn.com>
+Date:   Fri Nov 18 06:28:12 2022 -0800
+
+    phonebook working with fly io
+
+[33mcommit d7f9922bad1fd0621b288933521d5532520f3a21[m
+Author: Chelsea Saunders <c_chilcoat@msn.com>
+Date:   Fri Nov 18 03:04:41 2022 -0800
+
+    notes full stack working for both deployment and development modes
+
+[33mcommit 5cd0e2ce337dc59e6f58720988c7a246d5346dd2[m
+Author: Chelsea Saunders <c_chilcoat@msn.com>
+Date:   Fri Nov 18 02:06:47 2022 -0800
+
+    got backend flyio server running
+
+[33mcommit 36d11bd29cc66fec31d0c8cf943487d99da281c0[m
+Author: Chelsea Saunders <c_chilcoat@msn.com>
+Date:   Thu Nov 17 22:43:07 2022 -0800
+
+    phonebook backend with all but extra exercise done
+
+[33mcommit fa85c39c3b4526e92fc0706c13b5fd33307e720b[m
+Author: Chelsea Saunders <c_chilcoat@msn.com>
+Date:   Thu Nov 17 18:43:40 2022 -0800
+
+    completed exercises 3.1-3.6
+
+[33mcommit 6d7b464fed24405f2721a241600241003356b205[m
+Author: Chelsea Saunders <c_chilcoat@msn.com>
+Date:   Thu Nov 17 18:42:30 2022 -0800
+
+    completed exercises 3.1-3.6"
+
+[33mcommit 18e49d45125330076fccb9647fb2b18fd20d1d3c[m
+Author: Chelsea Saunders <c_chilcoat@msn.com>
+Date:   Tue Nov 15 11:07:44 2022 -0800
+
+    phone book working with update number and using server, exercises 2.15-2.18
+
+[33mcommit 026cb3ffd7fcf982cc25759e8ad3fdea50020a6d[m
+Author: Chelsea Saunders <c_chilcoat@msn.com>
+Date:   Tue Nov 15 06:16:54 2022 -0800
+
+    one important change to useeffect hook'
+
+[33mcommit fb51c20d3c7ac73290aa8b83bbcbe1e00b048885[m
+Author: Chelsea Saunders <c_chilcoat@msn.com>
+Date:   Tue Nov 15 04:40:38 2022 -0800
+
+    finished exercise 2.14 but didnt bother with weather icon
+
+[33mcommit a57bfafbdc99d1dd8c5b6170c9ebfcb4c76e6af7[m
+Author: Chelsea Saunders <c_chilcoat@msn.com>
+Date:   Tue Nov 15 03:58:54 2022 -0800
+
+    working with exercises 2.12-2.13
+
+[33mcommit ae9c8a7307b5608eb585b804c2f5fdec9beb31af[m
+Author: Chelsea Saunders <c_chilcoat@msn.com>
+Date:   Mon Nov 14 16:41:21 2022 -0800
+
+    exercises 2.11-2.12
+
+[33mcommit ea7157ac9a40f6724bebe973636126ef8618d251[m
+Author: Chelsea Saunders <c_chilcoat@msn.com>
+Date:   Fri Nov 11 15:07:30 2022 -0800
+
+    finished exercises from 2b
+
+[33mcommit c01c498d5bfea6f512c0e6ba5529dc72dcec3d91[m
+Author: Chelsea Saunders <c_chilcoat@msn.com>
+Date:   Fri Nov 11 12:48:19 2022 -0800
+
+    phone book app working, but need to separate components
+
+[33mcommit 010f8eb410cd666bd1a3394430577f9cf80f2884[m
+Author: Chelsea Saunders <c_chilcoat@msn.com>
+Date:   Thu Nov 10 14:18:22 2022 -0800
+
+    finished lesson 2b follow-along
+
+[33mcommit 72b539d9bb27afdb646139b657dc0bcef21a8e54[m
+Author: Chelsea Saunders <c_chilcoat@msn.com>
+Date:   Thu Nov 10 12:44:59 2022 -0800
+
+    finished exercises from 2a
+
+[33mcommit 933083f8c4f46cddafb2c587109e7d13ffc570d8[m
+Author: Chelsea Saunders <c_chilcoat@msn.com>
+Date:   Thu Nov 10 11:00:27 2022 -0800
+
+    working through 2a follow along
+
+[33mcommit bd96ccfad456d19a3c6a3f9a8a728ead2885c712[m
+Author: Chelsea Saunders <c_chilcoat@msn.com>
+Date:   Thu Nov 10 09:52:11 2022 -0800
+
+    finished exercises from part 1
+
+[33mcommit 85e586df2c36c5cfffd401f876c254d37e489300[m
+Author: Chelsea Saunders <c_chilcoat@msn.com>
+Date:   Tue Nov 8 23:45:52 2022 -0800
+
+    finished exercises 1.6-1.11
+
+[33mcommit a04c8960e5fac3b7dcb4ce028fb8bdbfd24f14f4[m
+Author: Chelsea Saunders <c_chilcoat@msn.com>
+Date:   Tue Nov 8 20:55:22 2022 -0800
+
+    working through follow-alongs in lesson 1d
+
+[33mcommit 6894dbe83be2783336d892ebf0bd966572f5b873[m
+Author: Chelsea Saunders <c_chilcoat@msn.com>
+Date:   Tue Nov 8 12:52:26 2022 -0800
+
+    finished 1c
+
+[33mcommit ae57b57cd64a7a19f6c0b46bdec05d82382925e9[m
+Author: Chelsea Saunders <c_chilcoat@msn.com>
+Date:   Tue Nov 8 11:07:16 2022 -0800
+
+    completed exercises from part 1b
+
+[33mcommit cd2fe3220e62f36f82a8b04739e999ce4a8e3283[m
+Author: Chelsea Saunders <c_chilcoat@msn.com>
+Date:   Tue Nov 8 09:49:05 2022 -0800
+
+    finished 1a
+
+[33mcommit 76f1005bebed934e0113e9fb2ac6d58f491af0f8[m
+Author: Chelsea Saunders <c_chilcoat@msn.com>
+Date:   Mon Nov 7 13:07:10 2022 -0800
+
+    first commit
