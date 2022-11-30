@@ -13,13 +13,14 @@ const Menu = ({ anecdotes, addNew }) => {
     <Router>
       <div>
         <Link to='/' style={padding}>anecdotes</Link>
-        <Link to='/new' style={padding}>create new</Link>
+        <Link to='/create' style={padding}>create new</Link>
         <Link to='/about' style={padding}>about</Link>
       </div>
 
       <Routes>
         <Route path='/' element={<AnecdoteList anecdotes={anecdotes} />} />
-        <Route path='/new' element={<CreateNew addNew={addNew} />} />
+        {/* <Route path='/anecdotes/:id' element={<Anecdote selectedAnecdote={selectedAnecdote} />} */}
+        <Route path='/create' element={<CreateNew addNew={addNew} />} />
         <Route path='/about' element={<About />} />
       </Routes>
     </Router>
@@ -139,9 +140,6 @@ const App = () => {
     <div>
       <h1>Software anecdotes</h1>
       <Menu anecdotes={anecdotes} addNew={addNew} />
-      <AnecdoteList anecdotes={anecdotes} />
-      <About />
-      <CreateNew addNew={addNew} />
       <Footer />
     </div>
   )
