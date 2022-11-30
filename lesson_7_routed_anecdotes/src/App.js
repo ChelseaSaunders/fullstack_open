@@ -7,6 +7,20 @@ import {
   useNavigate
 } from "react-router-dom"
 
+const useField = (type) => {
+  const [value, setValue] = useState('')
+
+  const onChange = (event) => {
+    setValue(event.target.value)
+  }
+
+  return {
+    type,
+    value,
+    onChange
+  }
+}
+
 const AnecdoteList = ({ anecdotes, newAnecdote, setnewAnecdote }) => (
   <div>
     <h2>Anecdotes</h2>
@@ -51,25 +65,24 @@ const Footer = () => (
 )
 
 const CreateNew = ({ addNew, setnewAnecdote }) => {
-  const [content, setContent] = useState('')
-  const [author, setAuthor] = useState('')
-  const [info, setInfo] = useState('')
+  const content = useField('text')
+  const author = useField('text')
+  const info = useField('text')
 
   const navigate = useNavigate()
 
   const handleSubmit = (e) => {
     e.preventDefault()
     addNew({
-      content,
-      author,
-      info,
+      content: content.value,
+      author: author.value,
+      info: info.value,
       votes: 0
     })
     navigate('/')
-    setnewAnecdote(content)
+    setnewAnecdote(content.value)
     setTimeout(() => setnewAnecdote(null), 5000)
   }
-
 
   return (
     <div>
@@ -77,15 +90,15 @@ const CreateNew = ({ addNew, setnewAnecdote }) => {
       <form onSubmit={handleSubmit}>
         <div>
           content
-          <input name='content' value={content} onChange={(e) => setContent(e.target.value)} />
+          <input {...content} />
         </div>
         <div>
           author
-          <input name='author' value={author} onChange={(e) => setAuthor(e.target.value)} />
+          <input {...author} />
         </div>
         <div>
           url for more info
-          <input name='info' value={info} onChange={(e)=> setInfo(e.target.value)} />
+          <input {...info} />
         </div>
         <button>create</button>
       </form>
@@ -124,6 +137,7 @@ const App = () => {
 
   const addNew = (anecdote) => {
     anecdote.id = Math.round(Math.random() * 10000)
+    console.log(anecdote)
     setAnecdotes(anecdotes.concat(anecdote))
   }
 
@@ -136,7 +150,7 @@ const App = () => {
           <Link to='/create' style={padding}>create new</Link>
           <Link to='/about' style={padding}>about</Link>
           {newAnecdote
-            ? <h2 style={newAlert}>{newAnecdote} added</h2>
+            ? <h2 style={newAlert}> {newAnecdote} added</h2>
             : <br />
           }
         </div>
