@@ -5,36 +5,18 @@ import {
   Routes, Route, Link
 } from "react-router-dom"
 
-const Menu = ({ anecdotes, addNew }) => {
-  const padding = {
-    paddingRight: 5
-  }
-  return (
-    <Router>
-      <div>
-        <Link to='/' style={padding}>anecdotes</Link>
-        <Link to='/create' style={padding}>create new</Link>
-        <Link to='/about' style={padding}>about</Link>
-      </div>
-
-      <Routes>
-        <Route path='/' element={<AnecdoteList anecdotes={anecdotes} />} />
-        {/* <Route path='/anecdotes/:id' element={<Anecdote selectedAnecdote={selectedAnecdote} />} */}
-        <Route path='/create' element={<CreateNew addNew={addNew} />} />
-        <Route path='/about' element={<About />} />
-      </Routes>
-    </Router>
-  )
-}
-
 const AnecdoteList = ({ anecdotes }) => (
   <div>
     <h2>Anecdotes</h2>
     <ul>
-      {anecdotes.map(anecdote => <li key={anecdote.id} >{anecdote.content}</li>)}
+      {anecdotes.map(anecdote => <li key={anecdote.id} ><Link to={`/anecdotes/${anecdote.id}`}>{anecdote.content}</Link></li>)}
     </ul>
   </div>
 )
+
+const Anecdote = () => {
+  return <h1>I'm an anecdote!</h1>
+}
 
 const About = () => (
   <div>
@@ -62,7 +44,6 @@ const CreateNew = (props) => {
   const [content, setContent] = useState('')
   const [author, setAuthor] = useState('')
   const [info, setInfo] = useState('')
-
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -115,7 +96,9 @@ const App = () => {
     }
   ])
 
-  const [notification, setNotification] = useState('')
+  const padding = {
+    paddingRight: 5
+  }
 
   const addNew = (anecdote) => {
     anecdote.id = Math.round(Math.random() * 10000)
@@ -125,21 +108,34 @@ const App = () => {
   const anecdoteById = (id) =>
     anecdotes.find(a => a.id === id)
 
-  const vote = (id) => {
-    const anecdote = anecdoteById(id)
+  // const vote = (id) => {
+  //   const anecdote = anecdoteById(id)
 
-    const voted = {
-      ...anecdote,
-      votes: anecdote.votes + 1
-    }
+  //   const voted = {
+  //     ...anecdote,
+  //     votes: anecdote.votes + 1
+  //   }
 
-    setAnecdotes(anecdotes.map(a => a.id === id ? voted : a))
-  }
+  //   setAnecdotes(anecdotes.map(a => a.id === id ? voted : a))
+  // }
 
   return (
     <div>
       <h1>Software anecdotes</h1>
-      <Menu anecdotes={anecdotes} addNew={addNew} />
+      <Router>
+        <div>
+          <Link to='/' style={padding}>anecdotes</Link>
+          <Link to='/create' style={padding}>create new</Link>
+          <Link to='/about' style={padding}>about</Link>
+        </div>
+
+        <Routes>
+          <Route path='/' element={<AnecdoteList anecdotes={anecdotes} />} />
+          <Route path='/anecdotes/:id' element={<Anecdote />} />
+          <Route path='/create' element={<CreateNew addNew={addNew} />} />
+          <Route path='/about' element={<About />} />
+        </Routes>
+      </Router>
       <Footer />
     </div>
   )
