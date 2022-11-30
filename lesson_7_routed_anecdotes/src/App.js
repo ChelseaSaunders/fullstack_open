@@ -7,19 +7,7 @@ import {
   useNavigate
 } from "react-router-dom"
 
-const useField = (type) => {
-  const [value, setValue] = useState('')
-
-  const onChange = (event) => {
-    setValue(event.target.value)
-  }
-
-  return {
-    type,
-    value,
-    onChange
-  }
-}
+import useField from './hooks'
 
 const AnecdoteList = ({ anecdotes, newAnecdote, setnewAnecdote }) => (
   <div>
@@ -72,7 +60,7 @@ const CreateNew = ({ addNew, setnewAnecdote }) => {
   const navigate = useNavigate()
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+  e.preventDefault()
     addNew({
       content: content.value,
       author: author.value,
@@ -82,6 +70,12 @@ const CreateNew = ({ addNew, setnewAnecdote }) => {
     navigate('/')
     setnewAnecdote(content.value)
     setTimeout(() => setnewAnecdote(null), 5000)
+  }
+
+  const reset = () => {
+    content.reset()
+    author.reset()
+    info.reset()
   }
 
   return (
@@ -101,6 +95,7 @@ const CreateNew = ({ addNew, setnewAnecdote }) => {
           <input {...info} />
         </div>
         <button>create</button>
+        <input type="reset" value = "reset" onClick={reset} />
       </form>
     </div>
   )
