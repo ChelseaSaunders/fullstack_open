@@ -2,7 +2,8 @@ import React from 'react'
 import { useState } from 'react'
 import {
   BrowserRouter as Router,
-  Routes, Route, Link
+  Routes, Route, Link,
+  useParams
 } from "react-router-dom"
 
 const AnecdoteList = ({ anecdotes }) => (
@@ -14,8 +15,16 @@ const AnecdoteList = ({ anecdotes }) => (
   </div>
 )
 
-const Anecdote = () => {
-  return <h1>I'm an anecdote!</h1>
+const Anecdote = ({ anecdotes }) => {
+  const id = useParams().id
+  const anecdote = anecdotes.find(anecdote => anecdote.id === Number(id))
+  return (
+    <div>
+      <h2>{anecdote.content}</h2>
+      <p>has {anecdote.votes} votes</p>
+      <p>for more info see <a href={anecdote.info}>{anecdote.info}</a></p>
+    </div>
+  )
 }
 
 const About = () => (
@@ -131,7 +140,7 @@ const App = () => {
 
         <Routes>
           <Route path='/' element={<AnecdoteList anecdotes={anecdotes} />} />
-          <Route path='/anecdotes/:id' element={<Anecdote />} />
+          <Route path='/anecdotes/:id' element={<Anecdote anecdotes={anecdotes} />} />
           <Route path='/create' element={<CreateNew addNew={addNew} />} />
           <Route path='/about' element={<About />} />
         </Routes>
