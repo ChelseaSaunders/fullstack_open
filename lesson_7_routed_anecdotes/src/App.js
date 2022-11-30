@@ -7,7 +7,7 @@ import {
   useNavigate
 } from "react-router-dom"
 
-import useField from './hooks'
+import { useField } from './hooks'
 
 const AnecdoteList = ({ anecdotes, newAnecdote, setnewAnecdote }) => (
   <div>
@@ -57,6 +57,13 @@ const CreateNew = ({ addNew, setnewAnecdote }) => {
   const author = useField('text')
   const info = useField('text')
 
+  const inputContent = {...content}
+  delete inputContent.reset
+  const inputAuthor = {...author}
+  delete inputAuthor.reset
+  const inputInfo = {...info}
+  delete inputInfo.reset
+
   const navigate = useNavigate()
 
   const handleSubmit = (e) => {
@@ -72,7 +79,7 @@ const CreateNew = ({ addNew, setnewAnecdote }) => {
     setTimeout(() => setnewAnecdote(null), 5000)
   }
 
-  const reset = () => {
+  const resetValues = () => {
     content.reset()
     author.reset()
     info.reset()
@@ -84,18 +91,18 @@ const CreateNew = ({ addNew, setnewAnecdote }) => {
       <form onSubmit={handleSubmit}>
         <div>
           content
-          <input {...content} />
+          <input {...inputContent} />
         </div>
         <div>
           author
-          <input {...author} />
+          <input {...inputAuthor} />
         </div>
         <div>
           url for more info
-          <input {...info} />
+          <input {...inputInfo} />
         </div>
-        <button>create</button>
-        <input type="reset" value = "reset" onClick={reset} />
+        <button type="submit">create</button>
+        <button type="button" onClick={resetValues}>reset</button>
       </form>
     </div>
   )
@@ -132,7 +139,6 @@ const App = () => {
 
   const addNew = (anecdote) => {
     anecdote.id = Math.round(Math.random() * 10000)
-    console.log(anecdote)
     setAnecdotes(anecdotes.concat(anecdote))
   }
 
