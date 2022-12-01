@@ -57,12 +57,11 @@ const CreateNew = ({ addNew, setnewAnecdote }) => {
   const author = useField('text')
   const info = useField('text')
 
-  const inputContent = {...content}
-  delete inputContent.reset
-  const inputAuthor = {...author}
-  delete inputAuthor.reset
-  const inputInfo = {...info}
-  delete inputInfo.reset
+  const removeProp = 'reset'
+  const { [removeProp]: contentReset, ...inputContent } = content
+  const { [removeProp]: authorReset, ...inputAuthor } = author
+  const { [removeProp]: infoReset, ...inputInfo } = info
+
 
   const navigate = useNavigate()
 
@@ -80,9 +79,9 @@ const CreateNew = ({ addNew, setnewAnecdote }) => {
   }
 
   const resetValues = () => {
-    content.reset()
-    author.reset()
-    info.reset()
+    contentReset()
+    authorReset()
+    infoReset()
   }
 
   return (
