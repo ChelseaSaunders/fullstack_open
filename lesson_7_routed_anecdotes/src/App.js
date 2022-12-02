@@ -62,7 +62,6 @@ const CreateNew = ({ addNew, setnewAnecdote }) => {
   const { [removeProp]: authorReset, ...inputAuthor } = author
   const { [removeProp]: infoReset, ...inputInfo } = info
 
-
   const navigate = useNavigate()
 
   const handleSubmit = (e) => {

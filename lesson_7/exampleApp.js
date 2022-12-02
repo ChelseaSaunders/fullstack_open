@@ -71,9 +71,10 @@ const App = () => {
           <Link style={padding} to="/users">users</Link>
           {user
             ? <em>{user} logged in</em>
-            : <link style={padding} to="/login">Log In</link>
+            : <Link style={padding} to="/login">Log In</Link>
           }
         </div>
+
 
         <Routes>
           <Route path="/notes/:id" element={<Note note={note} />} />
