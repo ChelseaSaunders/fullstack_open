@@ -19,16 +19,16 @@
 
 const calculateBMI = (height: number,  weight: number) => {
   const meters = height / 100;
-  const bmi = weight / (meters * meters)
+  const bmi = weight / (meters * meters);
 
   if (bmi < 25) {
-    return "normal"
+    return "normal";
   } else if (bmi >= 25 && bmi < 29) {
-    return "overweight"
+    return "overweight";
   } else {
-    return "obese"
+    return "obese";
   }
-}
+};
 
 // try {
 //   const { value1, value2 } = parseArguments(process.argv);

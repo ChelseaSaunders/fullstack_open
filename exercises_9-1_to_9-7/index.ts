@@ -1,7 +1,9 @@
 import express = require('express');
 import calculateBMI from './bmiCalculator';
+import calculateExercises from './exerciseCalculator';
 
 const app = express();
+app.use(express.json())
 
 app.get('/hello', (_req, res) => {
   res.send('Hello Full Stack');
@@ -16,7 +18,7 @@ app.get('/bmi', (req, res) => {
     weight: weight,
     height: height,
     bmi: bmi
-  }
+  };
 
   if (isNaN(weight) || isNaN(height)) {
     const error = {
@@ -25,8 +27,16 @@ app.get('/bmi', (req, res) => {
     res.send(JSON.stringify(error));
   }
 
-  res.send(JSON.stringify(responseData))
-})
+  res.send(JSON.stringify(responseData));
+});
+
+app.post('/exercises', (req, res) => {
+  // const body = await req.body;
+  // console.log(body)
+  const { daily_exercises, target } = req.body;
+  const responseData = calculateExercises(daily_exercises, target);
+  res.send(JSON.stringify(responseData));
+});
 
 const PORT = 3002;
 
