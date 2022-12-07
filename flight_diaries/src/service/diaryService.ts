@@ -6,7 +6,15 @@ const getEntries = () : DiaryEntry[] => {
   return diaries
 }
 
-const getNonSensitiveEntries = (): nonSensitiveDiaryEntry[] => {  return diaries.map(({ id, date, weather, visibility }) => ({    id,    date,    weather,    visibility,  }));};
+const getNonSensitiveEntries = (): nonSensitiveDiaryEntry[] => {
+  return diaries.map(({ id, date, weather, visibility }) => (
+    {
+      id,
+      date,
+      weather,
+      visibility,
+    }));
+};
 const addDiary = () => {
   return []
 }

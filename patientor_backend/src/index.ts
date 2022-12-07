@@ -1,6 +1,6 @@
 import express from 'express';
 const cors = require('cors');
-import getDiagnoses from './services/patientService';
+import { getDiagnoses, getPatients } from './services/patientService';
 
 const app = express();
 app.use(express.json());
@@ -14,6 +14,10 @@ app.get('/api/ping', (_req, res) => {
 
 app.get('/api/diagnoses', (_req, res) => {
   res.send(getDiagnoses());
+});
+
+app.get('/api/patients', (_req, res) => {
+  res.send(getPatients());
 });
 
 app.listen(PORT, () => {
